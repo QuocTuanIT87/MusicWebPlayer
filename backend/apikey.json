@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "uploadfilemp3nodejs",
+  "private_key_id": "2b946d5e276ee2a45c450820445d7eaf6dfd2562",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDT2H2AsZtMLXFG\n//hvTerwfq6Ey5plcQZN17d5bE14Z4z318g8ygvKNAp/qRoYwSfDwFWTTBuWo4Ws\nVGigF8JmabVyUYgXCfDsjd4icfBUy+POxoTo3UsrW5wB81d9r87PMIkrc/1MDL9R\nsYgKXXDl18vZ36THyOce7hE9zSD4YY8jnjDoO2MYyJpXIVpzTQqtbvu9rZnoIota\nkzFMmKSczEyPh8zII+y4PeP2+ByaVqFNX9/3DR7WVA/IcnzE209FGQGIfxQAy5au\nMlwIk8M5zf/OrDH9hh09yUleJra+79u2Tok6SvEh0bYFp+tDgvh2y4DlrsG3O2h5\nN0fXCkQRAgMBAAECggEACSe2ushSKg9fsR4QTj0bjWOoJqCG7mHdUCFlsjdqPK0a\n9D4MzwW7TzSDDKPR9yZn0cee2yQDoDW2ae1m7R5BvjvMxeE8pKQ/F3YFFs9+P6fl\nEzNUnJytqjTGD/aEfi/KG/2gu/JCDNaTMRRfSPVjUueJzYNjA2hNBrLqp1VVWq6G\nhR/VLYvl532hFVt16HYk579JlI6pD3MJe3jkrTYrGV4uKQtVKqA1LJGavoxdWcOk\nS/NNXpl81zd+PG6dGh4W/wVJRS/IIB25k+o/vm3CcM4SDgSgvxAVjYhEHTKk/sZg\nNUIWvQVPvTkNZZ3QqzTSpw0K06MYorUbJTIiWcaFnQKBgQDxY+9PbV2rkY5csPUe\nJJRe7S1necG8wr1BmFX564ZxkLKSfs3+j3ZzAU9k4LSJVxbouw5UaI0o4Mx6YJWo\n1ACDSx1uAR3t2/JMU70UnwPG979BEBfhHe7dSGs58V4ayh4V5mv3aZCdh32Tnh/O\nnfaqQWcA8X5bHt6nS+UMtl0+HQKBgQDgqstZHmSOkfU+8DgB1XY5vKsfRdIAnP37\nO9gavU2OUBG5l9VJcich7F7jOPaBpehVVyDdeqw1+uw2NjsZVmkIqWY61qrPJ7ts\nJUfeEn8SdwYO16U3kfxiC+97Aw1U2esPZeD89bbkFYuwdKn1djVXx0hyECvEL8Mb\n8amtOjjLhQKBgQCNx7G+yDDVXcftP26pRrjyzIH3nfciBIuepHgTM7giqeeIzfv2\nAZOD1wgn6yd+520oQv4Wq9YFZYwUcPhWUjb+5rahbvyCQcad+C09mGxiiA+IiohM\nDAXJaQi53r/0IjTrjgxqJFHxhKxIcP6jn/pKY+G5Fx6tLIOAZb5h6hb4LQKBgEzk\nZ6BitIvPDJ6z3JdUFZiBKBgV71/iW1LHEplkPMz+PnLEsmzmstn7aiZeco/A1pmO\nrmLe/12iOYH8YZG0b1JVl/V/TwqDULQctlIdBnytW9dsmtFAF57+8sGpM8DcrISi\nm7Q37JZ3gU2tQBYQlQUr4XGYc0I8Dozb0vTEvnd5AoGBANM8qs6mjIpSIGXdW5zI\namuAPYb7e+dOdV123AaeWGjHDkt81gP9c9yZi8mCFhdD5tDYgPVqIUajbixK8OFl\nwbQDMRaVW2FVYEs2NFwjPhjKlnURV3SEwZjUSDM5nQJ3J1ZMK45URzY19lsmrwFT\n7njlo9vRkmAigM4njUkBV4A/\n-----END PRIVATE KEY-----\n",
+  "client_email": "uploadfilemp3@uploadfilemp3nodejs.iam.gserviceaccount.com",
+  "client_id": "114980881594449189258",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/uploadfilemp3%40uploadfilemp3nodejs.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

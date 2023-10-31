@@ -1,0 +1,39 @@
+http://localhost:8080/api (baseURL)
+
++Auth
+1.Đăng ký tài khoản (/register)
+{
+    "email" : "",
+    "lastName" : "",
+    "firstName" : "",
+    "password" : "",
+    "birthday" : ""
+    "roleId" : ""
+}
+*note: 
+-Mật khẩu ít nhất 8 ký tự, không chứa khoảng trắng, có ít nhất 1 ký tự in hoa, có ít nhất 1 số, có ít nhất 1 ký tự
+đặc biệt.
+-roleId (0: user, 1: admin), mặc định là 0 nếu không truyền roleId.
+-Không được để trống field nào
+
+2.Đăng nhập tài khoản (/login)
+{
+    "email" : "",
+    "password" : ""
+}
+*note:
+-Không được để trống field nào
+
+3.Tạo bài hát mới (phải đăng nhập)
+-Dùng form-data
+
+name_song:"",
+lyric: "",
+audio: fileMp3,
+song_description: "",
+avatar_song: fileImage,
+category: "",
+
+*note:
+-Không được để trống (name_song, audio, avatar_song, category)
+
