@@ -1,0 +1,119 @@
+@import 'normalize.css'; //import font
+
+:root {
+    --primary: #fe2c55;
+    --black: #000;
+    --white: #fff;
+    --text-color: #333;
+
+    --font-family: 'Inter', sans-serif;
+    --font-family-second: 'Inter', sans-serif;
+
+    // Default Layout
+    --default-layout-header-high: 60px;
+    --default-layout-width: 1512px;
+    --default-layout-horizontal-spacer: 15px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    color: var(--text-color);
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 0;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+//Font Embedded
+@font-face {
+    font-family: Inter-Black;
+    src: url('/assets/fonts/static/Inter-Black.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-Bold;
+    src: url('/assets/fonts/static/Inter-Bold.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-ExtraBold;
+    src: url('/assets/fonts/static/Inter-ExtraBold.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-ExtraLight;
+    src: url('/assets/fonts/static/Inter-ExtraLight.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-Light;
+    src: url('/assets/fonts/static/Inter-Light.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-Medium;
+    src: url('/assets/fonts/static/Inter-Medium.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Inter-Regular;
+    src: url('/assets/fonts/static/Inter-Regular.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-SemiBold;
+    src: url('/assets/fonts/static/Inter-SemiBold.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Inter-Thin;
+    src: url('/assets/fonts/static/Inter-Thin.ttf');
+    font-weight: 200;
+}

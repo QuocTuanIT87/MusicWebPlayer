@@ -52,9 +52,10 @@ const createSong = async (authorizationHeader, audio, avatar_song, songName, lyr
                     const song = await db.Song.create({
                         name_song: songName,
                         lyric: lyric,
-                        audio: `https://drive.google.com/file/d/${fileSong.data.id}/view`,
+                       
+ audio: `http://docs.google.com/uc?export=open&id=${fileSong.data.id}`,
                         song_description: song_description,
-                        avatar_song: `https://drive.google.com/file/d/${fileImage.data.id}/view`,
+                        avatar_song: `http://docs.google.com/uc?export=open&id=${fileImage.data.id}`,
                         category: category,
                         userId: idUser,
                     });

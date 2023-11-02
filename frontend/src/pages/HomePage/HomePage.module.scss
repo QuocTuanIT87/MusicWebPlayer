@@ -1,0 +1,123 @@
+.wrapper {
+    padding: 8px 36px;
+}
+
+.main-content {
+    h2 {
+        color: #fff;
+    }
+    .contain-list-song {
+        margin-top: 16px;
+    }
+}
+
+.contain-list-song {
+    grid-gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.info-a-song {
+    color: #fff;
+    position: relative;
+    padding: 10px;
+    max-width: 374px;
+    max-height: 80px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #2f2739;
+
+        .option-icon {
+            display: block;
+        }
+
+        .cover-img {
+            .play-icon {
+                display: block;
+            }
+        }
+    }
+
+    .option-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 26px;
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+        display: none;
+
+        &:hover {
+            background-color: #ffffff1a;
+            cursor: pointer;
+        }
+    }
+
+    .cover-img {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translateY(-50%) translateX(50%);
+            line-height: 0;
+            font-size: 24px;
+            display: none;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        .playing-icon {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translateX(50%) translateY(-50%);
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    .des-song {
+        display: inline-block;
+        margin-left: 12px;
+        .song-name {
+            display: block;
+            font-size: 14px;
+            font-family: Inter-SemiBold;
+        }
+        .singer-name {
+            display: block;
+            font-size: 12px;
+            color: #ffffff80;
+            font-family: Inter-Medium;
+
+            &:hover {
+                text-decoration: underline;
+                color: #c273ed;
+                cursor: pointer;
+            }
+        }
+        .time-upload {
+            font-size: 12px;
+            color: #ffffff80;
+            font-family: Inter-Medium;
+        }
+    }
+}

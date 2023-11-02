@@ -1,11 +1,21 @@
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import DefaultLayout from './layouts/DefaultLayout';
 
 function App() {
-  return (
-    <div className="App">
-      <h3>Xin chào QuocTuanIT87!</h3>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <DefaultLayout>
+                    <Routes>
+                        <>
+                            <Route path="/" element={<HomePage />} />
+                        </>
+                    </Routes>
+                </DefaultLayout>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

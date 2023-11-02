@@ -1,0 +1,22 @@
+.layout-panel {
+    display: flex;
+}
+
+.sidebar-panel {
+    flex: 1;
+}
+
+.right-sidebar-panel {
+    flex: 5.4;
+}
+
+.header-panel {
+}
+
+.content-panel {
+    margin-top: 70px;
+    overflow-y: auto;
+}
+
+.player-bar {
+}
