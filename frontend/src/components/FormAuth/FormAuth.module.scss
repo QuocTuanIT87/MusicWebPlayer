@@ -1,0 +1,137 @@
+.wrapper {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
+
+.container {
+    width: 1000px;
+    display: flex;
+    min-height: 658px;
+    position: relative;
+    animation: showForm 0.3s ease-in-out;
+
+    .cover-img-sign {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+
+        img {
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .cover-image {
+        transition: all 0.6s ease-in-out;
+        flex: 1;
+
+        &.active {
+            transform: translateX(666px);
+        }
+
+        .cover-img-login {
+            width: 100%;
+            height: 100%;
+
+            img {
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .cover-form {
+        position: relative;
+        flex: 2;
+        transition: all 0.6s ease-in-out;
+
+        &.active {
+            transform: translateX(-333px);
+        }
+    }
+}
+
+@keyframes showForm {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cover-btn-switch {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 3px solid #ffffff1a;
+    border-radius: 24px;
+
+    .btn-login {
+        display: inline-block;
+
+        button {
+            padding: 6px 8px;
+            color: #ffffff80;
+            background-color: transparent;
+            font-family: Inter-Bold;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .active {
+            color: #fff;
+            background-color: #9b4de0;
+        }
+    }
+
+    .btn-signup {
+        display: inline-block;
+        button {
+            padding: 6px 8px;
+            color: #ffffff80;
+            background-color: transparent;
+            font-family: Inter-Bold;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .active {
+            color: #fff;
+            background-color: #9b4de0;
+        }
+    }
+}
+
+.cover-end-form {
+    font-size: 14px;
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    p {
+        color: #fff;
+    }
+
+    span {
+        color: #9b4de0;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

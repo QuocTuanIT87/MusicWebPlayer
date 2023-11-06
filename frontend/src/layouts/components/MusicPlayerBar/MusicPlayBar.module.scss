@@ -3,7 +3,6 @@
     right: 0;
     left: 0;
     bottom: 0;
-    // border-top: 1px solid #ffffff1a;
     border-top: 1px solid #fff;
 }
 
@@ -85,6 +84,7 @@
 .des-song {
     display: inline-block;
     margin-left: 8px;
+    width: 288px;
     .name-song {
         display: block;
         font-size: 16px;
@@ -106,7 +106,7 @@
 }
 
 .spin {
-    animation: spinDisc 4s linear infinite;
+    animation: spinDisc 6s linear infinite;
 }
 
 @keyframes spinDisc {

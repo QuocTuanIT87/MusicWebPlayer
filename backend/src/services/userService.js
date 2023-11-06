@@ -120,6 +120,7 @@ const registerAccount = async (email, lastName, firstName, birthday, password, r
                 password: hashPassword,
                 roleId: roleId,
             });
+            dataReturn.errCode = 0;
             dataReturn.message = message.successRegister;
             resolve(dataReturn);
         } catch (error) {

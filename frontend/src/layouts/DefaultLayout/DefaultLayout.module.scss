@@ -1,3 +1,6 @@
+.wrapper {
+}
+
 .layout-panel {
     display: flex;
 }
@@ -15,7 +18,7 @@
 
 .content-panel {
     margin-top: 70px;
-    overflow-y: auto;
+    margin-bottom: 120px;
 }
 
 .player-bar {

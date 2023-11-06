@@ -1,0 +1,136 @@
+.wrapper {
+    background-color: #252525;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    margin-top: 42px;
+    width: 340px;
+    margin-bottom: 10px;
+    h2 {
+        color: #9b4de0;
+        font-family: Inter-Bold;
+    }
+}
+
+.cover-contain-sign {
+    .form-input {
+        width: 100%;
+        padding: 12px 14px;
+        margin-top: 32px;
+        border-radius: 26px;
+        background-color: #252525;
+        color: #e0bbf5;
+        font-size: 16px;
+        caret-color: #9b4de0;
+        border: 3px solid #ffffff1a;
+
+        &::placeholder {
+            font-size: 14px;
+        }
+
+        &:focus {
+            box-shadow: 0 0 6px #9b4de0;
+        }
+    }
+}
+
+.title-birthday {
+    margin-top: 18px;
+    label {
+        color: #9b4de0;
+        font-family: Inter-Bold;
+    }
+}
+
+.cover-birthday {
+    display: flex;
+    margin-top: 6px;
+}
+
+.cover-input-birthday {
+    input {
+        width: 96%;
+        padding: 10px 14px;
+        background-color: #252525;
+        border-radius: 4px;
+        color: #e0bbf5;
+        border: 3px solid #ffffff1a;
+        &:focus {
+            box-shadow: 0 0 6px #9b4de0;
+        }
+    }
+
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+.cover-term {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    input {
+        appearance: none;
+        -webkit-appearance: none;
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        vertical-align: middle;
+        background-color: #fff;
+        outline: none;
+        cursor: pointer;
+    }
+
+    input:checked {
+        appearance: auto;
+        clip-path: circle(50% at 50% 50%);
+        background-color: red;
+    }
+
+    label {
+        color: #fff;
+        cursor: pointer;
+        font-size: 14px;
+
+        span {
+            color: #9b4de0;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.cover-btn-sign {
+    margin-top: 24px;
+    text-align: center;
+    button {
+        font-size: 16px;
+        font-family: Inter-Semibold;
+        padding: 16px 0;
+        color: #fff;
+        border-radius: 24px;
+        background-color: #9b4de0;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+    }
+}

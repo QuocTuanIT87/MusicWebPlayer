@@ -31,6 +31,10 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
+            singer: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             userId: {
                 allowNull: false,
                 type: Sequelize.UUID,

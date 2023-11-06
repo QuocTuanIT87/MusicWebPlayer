@@ -31,6 +31,7 @@ const message = {
     songNameEmpty: 'Vui lòng nhập tên bài hát!',
     categoryEmpty: 'Vui lòng chọn thể loại bài hát!',
     notValidMp3: 'Bạn đang chọn sai định dạng file nhạc!, Vui lòng chọn file có đuôi .mp3!',
+    singerEmpty: 'Vui lòng điền tên ca sĩ!',
 };
 
 module.exports = {

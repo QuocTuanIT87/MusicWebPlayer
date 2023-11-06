@@ -1,8 +1,6 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
-const path = require('path');
-const multer = require('multer');
-const upload = multer();
 const configViewEngine = require('./config/viewEngine');
 
 //router config
@@ -13,6 +11,9 @@ const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 const testConnection = require('./config/database');
+
+// Sử dụng CORS middleware
+app.use(cors());
 
 //config req.body
 app.use(express.json());

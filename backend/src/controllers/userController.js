@@ -7,7 +7,11 @@ const postRegisterAccount = async (req, res) => {
         const { email, lastName, firstName, birthday, password, roleId } = req.body;
         const result = await registerAccount(email, lastName, firstName, birthday, password, roleId);
         return res.status(200).json(result);
-    } catch (error) {}
+    } catch (error) {
+        const dataReturn = {};
+        dataReturn.error = error.message;
+        return res.status(500).json(dataReturn);
+    }
 };
 
 // Đăng nhập tài khoản
@@ -16,7 +20,11 @@ const postLoginAccount = async (req, res) => {
     try {
         const result = await loginAccount(email, password);
         return res.status(200).json(result);
-    } catch (error) {}
+    } catch (error) {
+        const dataReturn = {};
+        dataReturn.error = error.message;
+        return res.status(500).json(dataReturn);
+    }
 };
 
 module.exports = {

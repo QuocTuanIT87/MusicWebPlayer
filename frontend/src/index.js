@@ -4,14 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles';
+import FormProvider from './components/FormProvider/FormProvider';
+import AuthProvider from './components/AuthProvider';
+import SongProvider from './components/SongProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <GlobalStyles>
-            <App />
-        </GlobalStyles>
-    </React.StrictMode>,
+    // <React.StrictMode>
+    <GlobalStyles>
+        <SongProvider>
+            <AuthProvider>
+                <FormProvider>
+                    <App />
+                </FormProvider>
+            </AuthProvider>
+        </SongProvider>
+    </GlobalStyles>,
+    // </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
