@@ -6,7 +6,7 @@ import { songContext } from '../../../components/SongProvider/SongProvider';
 
 const cx = classNames.bind(styles);
 
-function AudioItem({ song }) {
+function AudioItem({ song, index }) {
     const contextSong = useContext(songContext);
 
     function formatTimeDifference(inputDate) {
@@ -29,20 +29,21 @@ function AudioItem({ song }) {
         }
     }
 
-    const handlePlayAudio = (audio, avatarSong, nameSong, singer) => {
+    const handlePlayAudio = (audio, avatarSong, nameSong, singer, index) => {
         localStorage.setItem('mp3', audio);
         localStorage.setItem('image', avatarSong);
         localStorage.setItem('singer', singer);
         localStorage.setItem('namesong', nameSong);
-
-        contextSong.setIsPlaying(!contextSong.isPlaying);
+        localStorage.setItem('index', index);
+        contextSong.setIsPlaying(true);
         contextSong.setAudioCurrent(audio);
+        contextSong.setCurrentId(index);
     };
     return (
         <div className={cx('info-a-song')}>
             <div
                 className={cx('cover-img')}
-                onClick={() => handlePlayAudio(song.audio, song.avatar_song, song.name_song, song.singer)}
+                onClick={() => handlePlayAudio(song.audio, song.avatar_song, song.name_song, song.singer, index)}
             >
                 <img src={song.avatar_song} alt="avatar_song" />
                 {localStorage.getItem('mp3') === song.audio && contextSong.isPlaying ? (

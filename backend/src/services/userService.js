@@ -1,5 +1,6 @@
 const db = require('../models/index');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { message } = require('../messages/message');
 const { getToken } = require('../controllers/authController');
 const salt = bcrypt.genSaltSync(10);
@@ -112,7 +113,7 @@ const registerAccount = async (email, lastName, firstName, birthday, password, r
     }
     return new Promise(async (resolve, reject) => {
         try {
-            const user = await db.User.create({
+            await db.User.create({
                 email: email,
                 lastName: lastName,
                 firstName: firstName,
@@ -169,7 +170,52 @@ const checkPasswordLogin = (password, passwordHash) => {
     return isCorrectPassword;
 };
 
+const getUserCurrent = (token) => {
+    const dataReturn = {};
+    return new Promise(async (resolve, reject) => {
+        try {
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
+                if (err) {
+                    if (err.name === 'TokenExpiredError') {
+                        jwt.verify(token, process.env.JWT_SECRET_KEY, { ignoreExpiration: true });
+                        dataReturn.isValidToken = false;
+                        dataReturn.data = {};
+                        dataReturn.message = message.tokenExpired;
+                        resolve(dataReturn);
+                    } else {
+                        reject(err); // Xử lý các lỗi khác
+                    }
+                    return;
+                }
+
+                const accountUser = await db.User.findOne({
+                    where: {
+                        email: decoded.data.email,
+                    },
+                    include: {
+                        model: db.Song,
+                        as: 'songs',
+                    },
+                });
+                if (accountUser) {
+                    dataReturn.isValidToken = true;
+                    dataReturn.user = accountUser;
+                    resolve(dataReturn);
+                } else {
+                    dataReturn.isValidToken = false;
+                    dataReturn.data = {};
+                    dataReturn.message = message.notFoundUser;
+                    resolve(dataReturn);
+                }
+            });
+        } catch (error) {
+            reject(error);
+        }
+    });
+};
+
 module.exports = {
     registerAccount,
     loginAccount,
+    getUserCurrent,
 };

@@ -3,11 +3,15 @@ import classNames from 'classnames/bind';
 import listCateSong from './CateSongs';
 import { useContext, useRef, useState } from 'react';
 import { CreateSongService } from '../../service/Song/CreateSongService';
-import { authContext } from '../../components/AuthProvider/AuthProvider';
+import LoadingItem from '../../components/LoadingItem';
+import NotifyItem from '../../components/NotifyItem/NotifyItem';
+import { formContext } from '../../components/FormProvider/FormProvider';
 
 const cx = classNames.bind(styles);
 
 function UploadPage() {
+    const contextForm = useContext(formContext);
+
     const [isFileImage, setIsFileImage] = useState(false);
     const [isFileMp3, setIsFileMp3] = useState(false);
     const [srcImage, setSrcImage] = useState();
@@ -24,7 +28,10 @@ function UploadPage() {
     const [fileImage, setFileImage] = useState();
     const [des, setDes] = useState('');
     const [lyric, setLyric] = useState('');
-    const contextAuth = useContext(authContext);
+
+    // Thông báo trả về khi đăng bài hát
+    const [notify, setNotify] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleUploadSong = async () => {
         const FormData = require('form-data');
@@ -37,8 +44,17 @@ function UploadPage() {
         formData.append('category', cate);
         formData.append('singer', singer);
 
-        const result = await CreateSongService(formData, contextAuth.token);
-        console.log('result Upload: ', result);
+        setLoading(true);
+        const result = await CreateSongService(formData);
+        setLoading(false);
+        if (result.data.errCode !== 0) {
+            setNotify(result.data.message);
+        } else {
+            contextForm.setIsShowFormUpload(true);
+            setTimeout(() => {
+                contextForm.setIsShowFormUpload(false);
+            }, 3000);
+        }
     };
 
     const audioInputRef = useRef();
@@ -54,6 +70,7 @@ function UploadPage() {
     };
 
     const handleFileImageChange = (e) => {
+        setNotify(null);
         const selectedFile = e.target.files[0];
 
         if (selectedFile) {
@@ -64,6 +81,7 @@ function UploadPage() {
     };
 
     const handleFileMp3Change = (e) => {
+        setNotify(null);
         const selectedFile = e.target.files[0];
         setNameSongInput(selectedFile?.name);
         if (!selectedFile?.name.endsWith('.mp3')) {
@@ -81,10 +99,13 @@ function UploadPage() {
         const target = e.target;
         const selectedValue = target.options[target.selectedIndex].label;
         setCate(selectedValue);
+        setNotify(null);
     };
 
     return (
         <div className={cx('wrapper')}>
+            {loading && <LoadingItem />}
+            {contextForm.isShowFormUpload && <NotifyItem />}
             <h2>Đăng tải bài hát của bạn</h2>
             <div className={cx('container')}>
                 <div action="/upload" className={cx('form-control-upload')}>
@@ -96,7 +117,10 @@ function UploadPage() {
                                     className={cx('input-name-song')}
                                     type="text"
                                     spellCheck={false}
-                                    onChange={(e) => setNameSong(e.target.value)}
+                                    onChange={(e) => {
+                                        setNameSong(e.target.value);
+                                        setNotify(null);
+                                    }}
                                 />
                             </div>
                             <div className={cx('cover-singer-song')}>
@@ -105,7 +129,10 @@ function UploadPage() {
                                     className={cx('input-singer-song')}
                                     type="text"
                                     spellCheck={false}
-                                    onChange={(e) => setSinger(e.target.value)}
+                                    onChange={(e) => {
+                                        setSinger(e.target.value);
+                                        setNotify(null);
+                                    }}
                                 />
                             </div>
 
@@ -188,6 +215,11 @@ function UploadPage() {
                             </div>
 
                             <div className={cx('cover-btn-post')}>
+                                {notify && (
+                                    <div className={cx('notify')}>
+                                        <i className="fa-solid fa-circle-exclamation"></i> {notify}
+                                    </div>
+                                )}
                                 <input
                                     className={cx('btn-post')}
                                     type="submit"

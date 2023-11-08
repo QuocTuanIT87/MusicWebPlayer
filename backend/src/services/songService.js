@@ -9,23 +9,25 @@ const isImageFile = (file) => {
     return allowedExtensions.includes(fileExtension);
 };
 
-const checkFiledCreateSong = (audio, avatar_song, songName, category, singer) => {
+const checkFiledCreateSong = (files, songName, category, singer) => {
     const dataReturn = {};
-    dataReturn.isGoodFields = false;
 
-    if (!audio) {
+    dataReturn.isGoodFields = false;
+    if (!files.audio && !files.avatar_song) {
+        dataReturn.message = message.filesEmpty;
+    } else if (!files.audio) {
         dataReturn.message = message.audioEmpty;
     } else if (!singer) {
         dataReturn.message = message.singerEmpty;
-    } else if (!avatar_song) {
+    } else if (!files.avatar_song) {
         dataReturn.message = message.avatarSongEmpty;
-    } else if (!isImageFile(avatar_song.originalname)) {
+    } else if (!isImageFile(files.avatar_song[0].originalname)) {
         dataReturn.message = message.notValidImage;
     } else if (!songName) {
         dataReturn.message = message.songNameEmpty;
     } else if (!category) {
         dataReturn.message = message.categoryEmpty;
-    } else if (!audio.originalname.endsWith('.mp3')) {
+    } else if (!files.audio[0].originalname.endsWith('.mp3')) {
         dataReturn.message = message.notValidMp3;
     } else {
         dataReturn.isGoodFields = true;
@@ -33,20 +35,13 @@ const checkFiledCreateSong = (audio, avatar_song, songName, category, singer) =>
     return dataReturn;
 };
 
-const createSong = async (
-    authorizationHeader,
-    audio,
-    avatar_song,
-    songName,
-    lyric,
-    song_description,
-    category,
-    singer,
-) => {
+const createSong = async (authorizationHeader, files, songName, lyric, song_description, category, singer) => {
     const dataReturn = {};
     const token = authorizationHeader.split(' ')[1];
     const user = await handleCheckToken(token);
-    const checkFile = checkFiledCreateSong(audio, avatar_song, songName, category, singer);
+
+    const checkFile = checkFiledCreateSong(files, songName, category, singer);
+
     return new Promise(async (resolve, reject) => {
         try {
             if (checkFile.isGoodFields) {
@@ -54,9 +49,8 @@ const createSong = async (
                     const idUser = user.userId;
 
                     // Tạo folder mới trên gg drive và upload file mp3 và ảnh của bài hát vào folder đó
-                    const fileSong = await uploadFileMp3(audio, songName);
-                    const fileImage = await uploadFileImage(avatar_song, songName);
-
+                    const fileSong = await uploadFileMp3(files?.audio[0], songName);
+                    const fileImage = await uploadFileImage(files?.avatar_song[0], songName);
                     // Tạo bài hát mới trên database
                     const song = await db.Song.create({
                         name_song: songName,

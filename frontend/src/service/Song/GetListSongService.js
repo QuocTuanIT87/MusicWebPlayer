@@ -1,6 +1,6 @@
 import * as httpRequest from '../../ultils/httpRequest';
 
-export const GetListSongService = async (formData, token) => {
+export const GetListSongService = async () => {
     try {
         const res = await httpRequest.get('/list-song', {});
         console.log('successGetListSong: ', res);

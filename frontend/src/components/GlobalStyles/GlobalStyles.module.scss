@@ -52,8 +52,7 @@ input::-ms-clear {
 }
 
 button,
-input,
-[tabindex] {
+input {
     outline: none;
     border: none;
 }

@@ -113,6 +113,22 @@
     }
 }
 
+.inner-modal {
+    .item-menu {
+        color: #fff;
+        font-family: Inter-Bold;
+        padding: 8px;
+        background: 8px;
+        transition: 0.2s ease-in-out;
+        border-radius: 4px;
+        &:hover {
+            color: #9b4de0;
+            cursor: pointer;
+            background-color: #ffffff1a;
+        }
+    }
+}
+
 .form-control-search {
     padding: 8px;
     border-radius: 10px;

@@ -1,0 +1,35 @@
+.wrapper {
+    position: fixed;
+    inset: 0;
+    background-color: #ffffff1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.mr-8 {
+    margin-right: 8px;
+}
+
+.container {
+    min-width: 500px;
+    height: 160px;
+    background-color: #9b4de0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+
+    i {
+        font-size: 50px;
+    }
+}

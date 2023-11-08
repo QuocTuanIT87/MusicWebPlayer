@@ -139,18 +139,27 @@
 .cover-btn-post {
     text-align: center;
     margin-top: 230px;
+    position: relative;
+
+    .notify {
+        font-family: Inter-Bold;
+        color: red;
+    }
+
     .btn-post {
         padding: 12px 0;
-        min-width: 600px;
+        min-width: 300px;
         color: #fff;
         background-color: #9b4de0;
-        font-size: 16px;
+        font-size: 20px;
         font-family: Inter-Bold;
         cursor: pointer;
         border-radius: 4px;
 
         &:hover {
             opacity: 0.9;
+            color: #9b4de0;
+            background-color: #fff;
         }
     }
 }

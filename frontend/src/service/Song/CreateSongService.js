@@ -1,6 +1,6 @@
 import * as httpRequest from '../../ultils/httpRequest';
 
-export const CreateSongService = async (formData, token) => {
+export const CreateSongService = async (formData) => {
     try {
         const res = await httpRequest.post('/create-song', formData, {
             headers: {

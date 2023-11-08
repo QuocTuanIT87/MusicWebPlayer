@@ -3,7 +3,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #ffffff1a;
 }
 
 .mr-8 {
@@ -18,8 +18,31 @@
     margin-left: 8px;
 }
 
+// Controll Song
+.repeat {
+    color: #c273ed;
+    background-color: #ffffff1a;
+    position: relative;
+
+    &::after {
+        content: '1';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #c273ed;
+        border-radius: 50%;
+        font-size: 8px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        right: 0;
+    }
+}
+
 .container {
-    padding: 12px 20px 8px;
+    padding: 12px 20px 0;
     background-color: #130c1c;
     display: flex;
     justify-content: space-between;
@@ -28,8 +51,9 @@
     .right-player-bar {
         flex: 1;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        margin-bottom: 10px;
     }
 
     .cover-des-song {
@@ -60,14 +84,27 @@
         max-width: 400px;
         margin: 0 auto;
 
-        i {
-            cursor: pointer;
-            padding: 6px;
-            font-size: 18px;
+        [tabindex] {
+            outline: none;
+            border: 2px solid #fff;
+            transition: 0.2s ease-in-out;
+            &:hover {
+                border-color: #9b4de0;
+            }
         }
 
-        .cover-icon-play {
+        .control-icon {
             cursor: pointer;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 18px;
+            border-radius: 50%;
+
+            &:hover {
+                background-color: #ffffff1a;
+            }
         }
     }
 }
@@ -77,14 +114,57 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    line-height: 40px;
     text-align: center;
+    position: relative;
+
+    .icon-play {
+        font-size: 18px;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translateX(60%) translateY(-50%);
+    }
+
+    .icon-pause {
+        font-size: 18px;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translateX(50%) translateY(-50%);
+    }
+    transition: 0.1s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        color: #9b4de0;
+        border-color: #9b4de0;
+    }
 }
 
 .des-song {
     display: inline-block;
     margin-left: 8px;
-    width: 288px;
+    position: relative;
+
+    .love-song {
+        position: absolute;
+        right: -80px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        i {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            &:hover {
+                cursor: pointer;
+                background-color: #ffffff1a;
+            }
+        }
+    }
+
     .name-song {
         display: block;
         font-size: 16px;
@@ -98,11 +178,17 @@
     }
 }
 
-.avatar-song {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
+.cover-avatar-song {
+    position: relative;
+    bottom: 6px;
+    width: 78px;
+    height: 78px;
+    .avatar-song {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 }
 
 .spin {
@@ -121,7 +207,7 @@
 .timer-song {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 6px;
     font-family: Inter-Medium;
     min-height: 22px;
 
@@ -135,34 +221,34 @@
     width: 100%;
     display: flex;
     padding: 8px 0;
+
     .form-control-time {
         width: 100%;
-
-        height: 2px;
+        height: 4px;
         border-radius: 4px;
-        overflow: hidden;
-
-        -webkit-appearance: none;
-        -moz-appearance: none;
         appearance: none;
-        transition: 0.2s ease-in-out;
-        background-color: #fff;
+        background-color: #5a5560;
+        overflow: hidden;
 
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            background-color: #0075ff;
-            box-shadow: -406px 0 0 400px #ec1f55;
+            height: 4px;
+            width: 16px;
+            background-color: #fff;
+            box-shadow: -407px 0 0 400px #13bba4;
         }
     }
+
     &:hover {
-        cursor: pointer;
         .form-control-time {
             padding: 3px 0;
-            cursor: inherit;
+            cursor: pointer;
+
+            &::-webkit-slider-thumb {
+                height: 13px;
+                width: 18px;
+                border-radius: 50%;
+            }
         }
     }
 }
@@ -170,32 +256,35 @@
 .bar-count-volume {
     padding: 8px 0;
     display: flex;
-    .form-control-volume {
-        height: 2px;
-        border-radius: 4px;
-        overflow: hidden;
 
+    .form-control-volume {
+        overflow: hidden;
+        height: 4px;
+        border-radius: 4px;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        transition: 0.2s ease-in-out;
-        background-color: #fff;
+        background-color: #5a5560;
 
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            background-color: #0075ff;
-            box-shadow: -406px 0 0 400px #ec1f55;
+            height: 4px;
+            width: 16px;
+            background-color: #fff;
+            box-shadow: -407px 0 0 400px #13bba4;
         }
     }
+
     &:hover {
-        cursor: pointer;
         .form-control-volume {
             padding: 3px 0;
-            cursor: inherit;
+            cursor: pointer;
+            &::-webkit-slider-thumb {
+                height: 12px;
+                width: 18px;
+                border-radius: 50%;
+            }
         }
     }
 }

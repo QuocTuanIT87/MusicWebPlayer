@@ -1,17 +1,27 @@
 import classNames from 'classnames/bind';
 import styles from './LoginForm.module.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { LoginService } from '../../../service/Auth/LoginService';
+import { authContext } from '../../AuthProvider/AuthProvider';
+import { formContext } from '../../FormProvider/FormProvider';
 
 const cx = classNames.bind(styles);
 
 function LoginForm() {
+    const contextAuth = useContext(authContext);
+    const contextForm = useContext(formContext);
+
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const handleLogin = async () => {
         const result = await LoginService(email, password);
+        console.log('result: ', result);
         localStorage.setItem('token', result.data.token);
+        if (result.data.token) {
+            contextAuth.setLogged(true);
+            contextForm.setIsShowForm(false);
+        }
     };
 
     return (

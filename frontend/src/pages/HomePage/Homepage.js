@@ -1,21 +1,12 @@
 import styles from './HomePage.module.scss';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
-import { GetListSongService } from '../../service/Song/GetListSongService';
+import { useContext } from 'react';
 import AudioItem from '../components/AudioItem/AudioItem';
-
+import { songContext } from '../../components/SongProvider/SongProvider';
 const cx = classNames.bind(styles);
 
 function HomePage() {
-    const [listSong, setListSong] = useState([]);
-
-    useEffect(() => {
-        const fetchAPI = async () => {
-            const result = await GetListSongService();
-            setListSong(result?.data?.listSong);
-        };
-        fetchAPI();
-    }, []);
+    const contextSong = useContext(songContext);
 
     return (
         <div className={cx('wrapper')}>
@@ -25,8 +16,8 @@ function HomePage() {
                     <h2>Danh sách bài hát</h2>
 
                     <div className={cx('contain-list-song')}>
-                        {listSong?.map((song, index) => (
-                            <AudioItem key={index} song={song} />
+                        {contextSong.listSongHome?.map((song, index) => (
+                            <AudioItem key={index} song={song} index={index} />
                         ))}
                     </div>
                 </div>

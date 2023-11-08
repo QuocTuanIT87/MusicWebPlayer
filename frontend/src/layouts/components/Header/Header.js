@@ -4,11 +4,23 @@ import userProfileImage from '../../../assets/images/user-profile.png';
 import FormAuth from '../../../components/FormAuth';
 import { useContext } from 'react';
 import { formContext } from '../../../components/FormProvider/FormProvider';
+import { authContext } from '../../../components/AuthProvider/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function Header() {
     const contextForm = useContext(formContext);
+    const contextAuth = useContext(authContext);
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        contextAuth.setUser(null);
+        contextAuth.setLogged(false);
+        navigate('/');
+    };
 
     return (
         <div className={cx('wrapper')}>
@@ -28,32 +40,48 @@ function Header() {
                     <i className="fa-solid fa-gear"></i>
                     <div className={cx('cover-img-user')}>
                         <img src={userProfileImage} alt="user-profile" />
-                        <div className={cx('modal')}>
-                            <div className={cx('inner-modal')}>
-                                <div>
-                                    <button
-                                        className={cx('btn-login')}
-                                        onClick={() => {
-                                            contextForm.hideShowForm();
-                                            contextForm.setIsLogin(true);
-                                        }}
-                                    >
-                                        Đăng nhập
-                                    </button>
-                                </div>
-                                <div>
-                                    <button
-                                        className={cx('btn-register')}
-                                        onClick={() => {
-                                            contextForm.hideShowForm();
-                                            contextForm.setIsLogin(false);
-                                        }}
-                                    >
-                                        Đăng ký
-                                    </button>
+                        {!contextAuth.user && (
+                            <div className={cx('modal')}>
+                                <div className={cx('inner-modal')}>
+                                    <div>
+                                        <button
+                                            className={cx('btn-login')}
+                                            onClick={() => {
+                                                contextForm.hideShowForm();
+                                                contextForm.setIsLogin(true);
+                                            }}
+                                        >
+                                            Đăng nhập
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button
+                                            className={cx('btn-register')}
+                                            onClick={() => {
+                                                contextForm.hideShowForm();
+                                                contextForm.setIsLogin(false);
+                                            }}
+                                        >
+                                            Đăng ký
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        )}
+                        {contextAuth.user && (
+                            <div className={cx('modal')}>
+                                <div className={cx('inner-modal')}>
+                                    <Link to="/profile" style={{ display: 'block' }}>
+                                        <div className={cx('item-menu')}>
+                                            <i className="fa-regular fa-user"></i> Trang cá nhân
+                                        </div>
+                                    </Link>
+                                    <div className={cx('item-menu')} onClick={handleLogout}>
+                                        <i className="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
