@@ -1,0 +1,39 @@
+image: node:22
+
+stages:
+  - build
+  - deploy
+  - checklog
+
+build:
+  stage: build
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - npm install
+    - node --version && npm --version
+  tags:
+    - lab-server
+  cache:
+    paths:
+      - node_modules/
+
+deploy:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - |
+      pkill -f ./src/server.js || echo "No process found to kill"
+    - npm install nodemon
+    - export PATH="./node_modules/.bin:$PATH"
+    - nohup npm start > server.log 2>&1 &
+  tags:
+    - lab-server
+
+checklog:
+  stage: checklog
+  script:
+    - echo "Log checking stage"
+  tags:
+    - lab-server
